@@ -14,45 +14,21 @@ This system is optimized for **speed, accuracy, and scalability**, making it ide
 
 ## 🌟 Features
 
-### ✅ Trie-Based Dictionary & N-gram Search
-- Efficient trie data structure for fast lookup
-- Supports:
-  - Unigram
-  - Bigram
-  - Trigram
-  - Fourgram
-  - Fivegram
-- Suggestions ranked by frequency and context
+✅ **Trie-Based Dictionary & N-gram Search**  
+Uses compact trie structures for fast dictionary and n-gram lookup. Supports unigram, bigram, trigram, fourgram, and fivegram models. Words are prioritized based on frequency and grammatical context.  
 
----
+✅ **Fuzzy Matching**  
+Implements edit-distance-based search to correct spelling mistakes. Used when exact dictionary match fails.  
 
-### ✅ Fuzzy Matching
-- Uses edit-distance algorithm
-- Corrects spelling mistakes
-- Activates when exact match is not found
+✅ **Contextual Suggestions**  
+N-gram tries provide context-aware suggestions based on up to the last 4 Hindi words typed. Prioritizes more probable next words based on real Hindi language usage.  
 
----
+✅ **Real-Time Frontend**  
+Interactive Hindi typing interface using a `<textarea>`. The suggestion box appears directly below the last typed word, even across lines, without shifting layout. Suggestions update dynamically via backend API.  
 
-### ✅ Contextual Suggestions
-- Uses previous **up to 4 Hindi words**
-- Provides context-aware predictions
-- Improves accuracy using real language patterns
+✅ **Flask + Apache + WSGI Integration**  
+Lightweight Flask server receives frontend input and communicates with C backend via FIFO. Deployed using Apache2 + mod_wsgi, ensuring production-readiness and stability.  
 
----
-
-### ✅ Real-Time Frontend
-- Interactive Hindi typing interface (`<textarea>`)
-- Suggestion box appears near cursor
-- Works across multiple lines without layout shift
-- Dynamic updates via backend API
-
----
-
-### ✅ Flask + Apache + WSGI Integration
-- Flask handles API communication
-- Apache + mod_wsgi for deployment
-- Production-ready architecture
-- FIFO-based communication between Python & C
 
 ---
 
