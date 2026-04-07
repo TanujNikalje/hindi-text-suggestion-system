@@ -1,63 +1,91 @@
-# Hindi-text-suggestion-system
-📝 Hindi Text Suggestion System
-The Hindi Text Suggestion System is a high-performance hybrid architecture that provides real-time word and phrase suggestions in Hindi based on user input. It combines a lightweight Flask frontend, a C backend for trie-based dictionary and n-gram search, and is deployable via Apache with WSGI.
+# 📝 Hindi Text Suggestion System
 
-This system is designed for speed and scalability, making it ideal for use in intelligent editors, search input boxes, and language learning tools.
+The **Hindi Text Suggestion System** is a high-performance hybrid application that provides real-time Hindi word and phrase suggestions based on user input.
 
-🌟 Features
-✅ Trie-Based Dictionary & N-gram Search
-Uses compact trie structures for fast dictionary and n-gram lookup.
-Supports unigram, bigram, trigram, fourgram, and fivegram models.
-Words are prioritized based on frequency and grammatical context.
-✅ Fuzzy Matching
-Implements edit-distance-based search to correct spelling mistakes.
-Used when exact dictionary match fails.
-✅ Contextual Suggestions
-N-gram tries provide context-aware suggestions based on up to the last 4 Hindi words typed.
-Prioritizes more probable next words based on real Hindi language usage.
-✅ Real-Time Frontend
-Interactive Hindi typing interface using a <textarea>.
-The suggestion box appears directly below the last typed word, even across lines, without shifting layout.
-Suggestions update dynamically via backend API.
-✅ Flask + Apache + WSGI Integration
-Lightweight Flask server receives frontend input and communicates with C backend via FIFO.
-Deployed using Apache2 + mod_wsgi, ensuring production-readiness and stability.
-🔧 Technologies Used
-Layer	Technology
-Frontend	HTML, JavaScript, CSS
-Backend	C (Trie, N-gram logic)
-Middleware	Python Flask
-Server	Apache2 + mod_wsgi
-Communication	Python <-> C via FIFO
-OS	Linux (Ubuntu/Debian)
-🚀 How It Works
-User types Hindi text in the frontend.
-On every keystroke, the last few words and context are sent to /suggest (Flask API).
-The Flask backend:
-Sends data to the C server using named pipes (FIFO).
-C server performs a dictionary + n-gram search.
-Returns best-matched Hindi suggestions.
-Suggestions are shown below the cursor in real-time.
-📦 Setup Instructions
-1) Clone the Repository
-git clone git@github.com:yourusername/hindi-text-suggestion-system.git
+It combines:
+- ⚡ C backend (Trie + N-gram engine)
+- 🌐 Flask middleware (API layer)
+- 🎨 HTML/CSS/JS frontend
+- 🚀 Apache + WSGI deployment
+
+This system is optimized for **speed, accuracy, and scalability**, making it ideal for intelligent editors, search boxes, and language learning tools.
+
+---
+
+## 🌟 Features
+
+### ✅ Trie-Based Dictionary & N-gram Search
+- Efficient trie data structure for fast lookup
+- Supports:
+  - Unigram
+  - Bigram
+  - Trigram
+  - Fourgram
+  - Fivegram
+- Suggestions ranked by frequency and context
+
+---
+
+### ✅ Fuzzy Matching
+- Uses edit-distance algorithm
+- Corrects spelling mistakes
+- Activates when exact match is not found
+
+---
+
+### ✅ Contextual Suggestions
+- Uses previous **up to 4 Hindi words**
+- Provides context-aware predictions
+- Improves accuracy using real language patterns
+
+---
+
+### ✅ Real-Time Frontend
+- Interactive Hindi typing interface (`<textarea>`)
+- Suggestion box appears near cursor
+- Works across multiple lines without layout shift
+- Dynamic updates via backend API
+
+---
+
+### ✅ Flask + Apache + WSGI Integration
+- Flask handles API communication
+- Apache + mod_wsgi for deployment
+- Production-ready architecture
+- FIFO-based communication between Python & C
+
+---
+
+## 🔧 Technologies Used
+
+| Layer        | Technology                     |
+|-------------|------------------------------|
+| Frontend     | HTML, CSS, JavaScript        |
+| Backend      | C (Trie & N-gram logic)      |
+| Middleware   | Python Flask                 |
+| Server       | Apache2 + mod_wsgi           |
+| Communication| FIFO (Python ↔ C)            |
+| OS           | Linux (Ubuntu/Debian)        |
+
+---
+
+## 🚀 How It Works
+
+1. User types Hindi text in the frontend.
+2. Input is sent to `/suggest` API (Flask).
+3. Flask backend:
+   - Sends request to C server via FIFO
+4. C server:
+   - Performs dictionary + N-gram lookup
+   - Finds best matches
+5. Suggestions returned to frontend
+6. Displayed in real-time near cursor
+
+---
+
+## 📦 Setup Instructions
+
+### 1️⃣ Clone the Repository
+```bash
+git clone https://github.com/yourusername/hindi-text-suggestion-system.git
 cd hindi-text-suggestion-system
-2) Start the C Server (in background or service)
-./main Dictionary/ Input/
-
-3) Deploy with Apache + WSGI
-Make sure /etc/apache2/sites-enabled/hindi_suggestions.conf points to:
-
-WSGIScriptAlias /suggest /var/www/hindi_suggestions/app.wsgi
-4) Start Apache
-sudo systemctl start apache2
-
-5) Open WebBrowser
-Enter http://localhost/
-Try out Typing in Hindi and have Fun!
-✍️ Future Improvements
-User-specific frequency learning (adaptive suggestion ranking).
-Unicode normalization for broader Devanagari coverage.
-React-based frontend for better UX and mobile compatibility.
-📄 License
-This project is open-source and available under the MIT License.
