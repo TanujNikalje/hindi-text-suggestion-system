@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 📝 Hindi Text Suggestion System
 
 The **Hindi Text Suggestion System** is a high-performance hybrid architecture that provides **real-time word and phrase suggestions in Hindi** based on user input.
@@ -85,3 +86,6 @@ sudo systemctl start apache2
 
 ## 📄 License
 This project is open-source and available under the MIT License.
+=======
+
+>>>>>>> c91e09d487687638c2285847a6b65f95cc5d72ee
