@@ -59,6 +59,7 @@ Lightweight Flask server receives frontend input and communicates with C backend
 
 ---
 
+---
 ## 📦 Setup Instructions
 
 ### 1️⃣ Clone the Repository
